@@ -81,7 +81,7 @@ This file is for the deployment enviroments configuration. Update the subscripti
   
 #### Environmental variables
 
-The toolkit uses environmental variables instead of configuration files to help avoid the accidental inclusion of secrets into your source control. In the context of a CI/CD pipeline, these values would be retrieved from a key vault.
+The toolkit uses environmental variables instead of configuration files to help avoid the accidental inclusion of secrets into your source control. In the context of a CI/CD pipeline, these values would be retrieved from a key vault. For GitHub Actions workflow this will be coming from GitHub Secrets.
 
 Set these environmental variables by substituting the actual values in the script below.
 Copy and paste this script into PowerShell to execute it.
@@ -89,6 +89,7 @@ Copy and paste this script into PowerShell to execute it.
 Note: The first two variables are set with the content of the configuration files we just modified. The path will not resolve correctly unless you are in `/usr/src/app` directory. 
 
 ```PowerShell
+$ENV:IS_DEV_OPS = "false"
 $ENV:ORGANIZATION_NAME = "[ORGANIZATION_NAME]"
 $ENV:AZURE_ENVIRONMENT_NAME = "[AZURE_ENVIRONMENT]"
 $ENV:AZURE_LOCATION = "[AZURE_REGION]"
@@ -106,6 +107,8 @@ $ENV:ADMIN_USER_SSH = "[SSH_KEY]"
 
 **NOTE:** Examples to setting the env variables
 
+- IS_DEV_OPS
+  - Leave this "false" when deploying manually. From GitHub actions workflow this value will be passed in as "true"
 - "[ORGANIZATION_NAME]"
   - Abbreviation of your org (for e.g. contoso) with **NO SPACES**
   - Must be 10 characters or less
@@ -194,8 +197,25 @@ The following is the series of commands to execute.
 ./Orchestration/OrchestrationService/ModuleConfigurationDeployment.ps1 -TearDownEnvironment -DefinitionPath ./Environments/SharedServices/definition.json
 ```
 
-Note: This is the same command you used to deploy except that you include ` -TearDownEnvironment`.
+Note: This is the same command you used to deploy except that you include `-TearDownEnvironment`.
 It uses the same configuration, so if you change the configuration the tear down may not execute as expected.
+
+### **Remove vdc-toolkit-rg**
+
+Teardown removes only the resources deployed from VDC toolkit orchestration but do not actually remove the resource group (vdc-toolkit-rg) and storage accounts created by VDC toolkit deployment.
+vdc-toolkit-rg
+
+Use the Azure Cli to remove the resource group and the storage accounts. Find the storage account name from the vdc-toolkit-rg resource group.
+
+``` AzureCli
+az account set --subscription [SUBSCRIPTION_ID]
+
+az storage container legal-hold clear --resource-group vdc-toolkit-rg --account-name [STORAGE_ACCOUNT_NAME] --container-name deployments --tags audit
+
+az storage container legal-hold clear --resource-group vdc-toolkit-rg --account-name [STORAGE_ACCOUNT_NAME] --container-name audit --tags audit
+```
+
+### **Remove KeyVault**
 
 For safety reasons, the key vault will not be deleted. Instead, it will be set to a _removed_ state. This means that the name is still considered in use. To fully delete the key vault, use:
 
