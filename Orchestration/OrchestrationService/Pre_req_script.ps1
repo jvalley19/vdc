@@ -1,6 +1,6 @@
 ﻿##### Replace values with environment variables for the toolkit.subscription.json file
 $var = (Get-Content -Path .\Config\toolkit.subscription.json) | ConvertFrom-Json
-$var.Comments = "ToolKit for Jack"
+$var.Comments = "ToolKit for creating a new Virtual Data Center"
 $var.SubscriptionId = $ENV:SUBSCRIPTION_ID
 $var.TenantId = $ENV:TENANT_ID
 $var.Location = $ENV:AZURE_LOCATION

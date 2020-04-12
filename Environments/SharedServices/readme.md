@@ -172,10 +172,12 @@ If you prefer you can deploy the constituent modules for Shared Services individ
 The following is the series of commands to execute.
 
 ``` PowerShell
-        .\Orchestration\OrchestrationService\ModuleConfigurationDeployment.ps1 -DefinitionPath .\Environments\SharedServices\definition.json -ModuleConfigurationName "VirtualNetworkHUB"
-        .\Orchestration\OrchestrationService\ModuleConfigurationDeployment.ps1 -DefinitionPath .\Environments\SharedServices\definition.json -ModuleConfigurationName "VirtualNetworkSPOKE"
-        .\Orchestration\OrchestrationService\ModuleConfigurationDeployment.ps1 -DefinitionPath .\Environments\SharedServices\definition.json -ModuleConfigurationName "VirtualNetworkPeeringHub"
-        .\Orchestration\OrchestrationService\ModuleConfigurationDeployment.ps1 -DefinitionPath .\Environments\SharedServices\definition.json -ModuleConfigurationName "VirtualNetworkPeeringSpoke"
+         .\Orchestration\OrchestrationService\ModuleConfigurationDeployment.ps1 -DefinitionPath .\Environments\SharedServices\definition.json -ModuleConfigurationName "AzureFirewall"
+        .\Orchestration\OrchestrationService\ModuleConfigurationDeployment.ps1 -DefinitionPath .\Environments\SharedServices\definition.json -ModuleConfigurationName "VirtualNetwork"
+        .\Orchestration\OrchestrationService\ModuleConfigurationDeployment.ps1 -DefinitionPath .\Environments\SharedServices\definition.json -ModuleConfigurationName "AzureSecurityCenter"
+        .\Orchestration\OrchestrationService\ModuleConfigurationDeployment.ps1 -DefinitionPath .\Environments\SharedServices\definition.json -ModuleConfigurationName "NISTControls"
+        .\Orchestration\OrchestrationService\ModuleConfigurationDeployment.ps1 -DefinitionPath .\Environments\SharedServices\definition.json -ModuleConfigurationName "AutomationAccounts"
+        .\Orchestration\OrchestrationService\ModuleConfigurationDeployment.ps1 -DefinitionPath .\Environments\SharedServices\definition.json -ModuleConfigurationName "DomainControllerASG"
         .\Orchestration\OrchestrationService\ModuleConfigurationDeployment.ps1 -DefinitionPath .\Environments\SharedServices\definition.json -ModuleConfigurationName "DiagnosticStorageAccount"
         .\Orchestration\OrchestrationService\ModuleConfigurationDeployment.ps1 -DefinitionPath .\Environments\SharedServices\definition.json -ModuleConfigurationName "EnableServiceEndpointOnDiagnosticStorageAccount"
         .\Orchestration\OrchestrationService\ModuleConfigurationDeployment.ps1 -DefinitionPath .\Environments\SharedServices\definition.json -ModuleConfigurationName "LogAnalytics"
@@ -183,7 +185,7 @@ The following is the series of commands to execute.
         .\Orchestration\OrchestrationService\ModuleConfigurationDeployment.ps1 -DefinitionPath .\Environments\SharedServices\definition.json -ModuleConfigurationName "ArtifactsStorageAccount"
         .\Orchestration\OrchestrationService\ModuleConfigurationDeployment.ps1 -DefinitionPath .\Environments\SharedServices\definition.json -ModuleConfigurationName "UploadScriptsToArtifactsStorage"
         .\Orchestration\OrchestrationService\ModuleConfigurationDeployment.ps1 -DefinitionPath .\Environments\SharedServices\definition.json -ModuleConfigurationName "JumpboxASG"
-        .\Orchestration\OrchestrationService\ModuleConfigurationDeployment.ps1 -DefinitionPath .\Environments\SharedServices\definition.json -ModuleConfigurationName "WindowsVM"
+        .\Orchestration\OrchestrationService\ModuleConfigurationDeployment.ps1 -DefinitionPath .\Environments\SharedServices\definition.json -ModuleConfigurationName "SharedServicesNSG"
 ```
 
 **NOTE:**
