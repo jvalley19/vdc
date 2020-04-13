@@ -172,7 +172,7 @@ If you prefer you can deploy the constituent modules for Shared Services individ
 The following is the series of commands to execute.
 
 ``` PowerShell
-         .\Orchestration\OrchestrationService\ModuleConfigurationDeployment.ps1 -DefinitionPath .\Environments\SharedServices\definition.json -ModuleConfigurationName "AzureFirewall"
+        .\Orchestration\OrchestrationService\ModuleConfigurationDeployment.ps1 -DefinitionPath .\Environments\SharedServices\definition.json -ModuleConfigurationName "AzureFirewall"
         .\Orchestration\OrchestrationService\ModuleConfigurationDeployment.ps1 -DefinitionPath .\Environments\SharedServices\definition.json -ModuleConfigurationName "VirtualNetwork"
         .\Orchestration\OrchestrationService\ModuleConfigurationDeployment.ps1 -DefinitionPath .\Environments\SharedServices\definition.json -ModuleConfigurationName "AzureSecurityCenter"
         .\Orchestration\OrchestrationService\ModuleConfigurationDeployment.ps1 -DefinitionPath .\Environments\SharedServices\definition.json -ModuleConfigurationName "NISTControls"
