@@ -98,7 +98,7 @@ $ENV:SUBSCRIPTION_ID = "[SUBSCRIPTION_ID]"
 $ENV:KEYVAULT_MANAGEMENT_USER_ID  = "[KEY_VAULT_MANAGEMENT_USER_ID]"
 $ENV:DEVOPS_SERVICE_PRINCIPAL_USER_ID = "[SERVICE_PRINCIPAL_USER_ID]"
 $ENV:DOMAIN_ADMIN_USERNAME = "[DOMAIN_ADMIN_USER_NAME]"
-$ENV:DOMAIN_ADMIN_USER_PWD = "[DOMAIM_ADMIN_USER_PASSWORD]"
+$ENV:DOMAIN_ADMIN_USER_PWD = "[DOMAIN_ADMIN_USER_PASSWORD]"
 $ENV:ADMIN_USER_NAME = "[VM_ADMIN_USER_NAME]"
 $ENV:ADMIN_USER_PWD = "[VM_ADMIN_USER_PASSWORD]"
 $ENV:AZURE_DISCOVERY_URL = "https://management.azure.com/metadata/endpoints?api-version=2019-05-01"
@@ -132,12 +132,12 @@ $ENV:ADMIN_USER_SSH = "[SSH_KEY]"
 - "[SUBSCRIPTION_ID]" - Subscription's GUID
 - "[DOMAIN_ADMIN_USER_NAME]"
   - Domain user name - will be used for AD deployment and not yet included in current deployment
-- "[DOMAIM_ADMIN_USER_PASSWORD]"
-  - Domain user password - will be used for AD deployment and not yet included in current deployment
+- "[DOMAIN_ADMIN_USER_PASSWORD]"
+  - Domain user password - will be used for AD deployment and not yet included in current deployment. Follow the [guidelines](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/faq#what-are-the-password-requirements-when-creating-a-vm) for setting the password.
 - "[VM_ADMIN_USER_NAME]"
   - VM log in username
 - "[VM_ADMIN_USER_PASSWORD]"
-  - VM user password
+  - VM user password. Follow the [guidelines](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/faq#what-are-the-password-requirements-when-creating-a-vm) for setting the password.
 - "[SSH_KEY]"
   - Needs to be a valid public ssh rsa key for SSH to linux box
   
