@@ -1,6 +1,8 @@
 # **To deploy Azure Virtual Datacenter for Shared Services**
 
 Deployment steps for [SharedServices](../../Environments/SharedServices) archetypes provided in the toolkit.
+The documentation applies to manually building and running the docker instance. For github action setup click
+"HERE."
 
 ### Clone the repository
 
@@ -23,7 +25,7 @@ These steps assume that the `git` command is on your path.
 
 After the image finishing building, you can run it using:
 
-`docker run -it --rm -v C:\git\vdc\Config:/usr/src/app/Config -v C:\git\vdc\Environments:/usr/src/app/Environments -v C:\git\vdc\Modules:/usr/src/app/Modules vdc:latest`
+`docker run -it --entrypoint="pwsh" --rm -v C:\git\vdc\Config:/usr/src/app/Config -v C:\git\vdc\Environments:/usr/src/app/Environments -v C:\git\vdc\Modules:/usr/src/app/Modules vdc:latest`
 
 A few things to note:
 
