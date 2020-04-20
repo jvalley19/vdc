@@ -328,7 +328,7 @@
         {
             "type": "Microsoft.Compute/availabilitySets",
             "apiVersion": "2016-04-30-preview",
-            "condition": "[not(variables('availabilityZonesEnabled'))]",
+            "condition": "[variables('availabilityZonesEnabled')]",
             "location": "[parameters('location')]",
             "name": "[variables('availabilitySetName')]",
             "properties": {

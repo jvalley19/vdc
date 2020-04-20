@@ -43,16 +43,6 @@ Import-Module $bootstrapModulePath -Force;
 Import-Module $factoryModulePath -Force;
 Import-Module "$($rootPath)/../Common/Helper.psd1" -Force;
 
-# For GitHub Actions to work
-if ($ENV:IS_DEV_OPS -eq $true)
-{
-    $null = Find-Module -Name Az | Install-Module -Force
-
-    $srvc_prin_passwd = ConvertTo-SecureString $ENV:SERVICE_PRINCIPAL_PASS -AsPlainText -Force
-    $credential = New-Object System.Management.Automation.PSCredential ($ENV:SERVICE_PRINCIPAL, $srvc_prin_passwd)
-    Connect-AzAccount -ServicePrincipal -Credential $credential -Tenant $ENV:TENANT_ID -SubscriptionId $ENV:SUBSCRIPTION_ID -EnvironmentName $ENV:AZURE_ENVIRONMENT_NAME
-}
-
 $global:deploymentService = $null;
 $global:cacheDataService = $null;
 $global:auditDataService = $null;
