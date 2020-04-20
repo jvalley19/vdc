@@ -1,6 +1,6 @@
 {
-  "Comments": "Cleaned up from deployment",
-  "TenantId": "f32b97f0-efb8-4bc3-91ee-18a6e5f635c9",
-  "SubscriptionId": "a2e6beb0-5ad7-4393-ade6-05ebba456f8f",
-  "Location": "East US"
+    "Comments":  "Cleaned up from deployment",
+    "TenantId":  "00000-0000000-000000-0000-0",
+    "SubscriptionId":  "000000-000-0000-0000",
+    "Location":  "DUMMYVALUE"
 }
