@@ -10,7 +10,20 @@ on:
 jobs:
 
   build:
-    env:
+    runs-on: windows-latest
+       
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Log into Azure
+      uses: azure/login@v1
+      with:
+       creds: ${{ secrets.AZURE_CREDENTIALS  }}  
+       
+       
+    - name: Build the Docker image & Deploy
+      shell : pwsh
+      env:
         SERVICE_PRINCIPAL: ${{ secrets.SERVICE_PRINCIPAL }}
         SERVICE_PRINCIPAL_PASS: ${{ secrets.SERVICE_PRINCIPAL_PASS }}
         DEVOPS_SERVICE_PRINCIPAL_USER_ID: ${{ secrets.DEVOPS_SERVICE_PRINCIPAL_USER_ID }}
@@ -25,14 +38,9 @@ jobs:
         SUBSCRIPTION_ID : ${{ secrets.SUBSCRIPTION_ID }}
         KEYVAULT_MANAGEMENT_USER_ID  : ${{ secrets.KEYVAULT_MANAGEMENT_USER_ID }}
         AZURE_DISCOVERY_URL : "https://management.azure.com/metadata/endpoints?api-version=2019-05-01"
-        ADMIN_USER_SSH : ${{ secrets.ADMIN_USER_SSH }}
-    runs-on: ubuntu-latest
-    
-    steps:
-    - uses: actions/checkout@v2
-         
-    - name: Build the Docker image & Deploy
-      id : hello
-      uses: jvalley19/vdc@master
-      
-  
+      run: |
+       docker build . -t vdc:latest
+       docker run -v "/vdc/tree/master/Config":"/usr/src/app/Config" -v "/vdc/tree/master/Environments":"/usr/src/app/Environments" -v "/vdc/tree/master/Modules":"/usr/src/app/Modules" vdc:latest
+       chmod +x  ./Orchestration/OrchestrationService/ModuleConfigurationDeployment.ps1
+       $DebugPreference="Continue"
+       ./Orchestration/OrchestrationService/ModuleConfigurationDeployment.ps1 -DefinitionPath ./Environments/MS-VDI/definition.json
