@@ -23,8 +23,8 @@
 			
 	- To add these secrets in your Github repository navigate to 
 		- "Settings" -> "Secrets"
-			- Then add each secret with exactly the name above			
-			
+			- Then add each secret value with exactly the corresponding name above			
+		- For more information visit the Github link for adding new [Secrets](https://help.github.com/en/actions/configuring-and-managing-workflows/creating-and-storing-encrypted-secrets).
 		-*You do not need* "" around your secret values. Enter them with raw data.
 	
 3. In your dockerimage.yml file you will need to change the following values that suit your need
