@@ -7,7 +7,7 @@ $null = Install-Module -Name Pester -Force
 $secpasswd = ConvertTo-SecureString $env:SERVICE_PRINCIPAL_PASS -AsPlainText -Force
 $Credential = New-Object System.Management.Automation.PSCredential ($env:SERVICE_PRINCIPAL, $secpasswd)
 
-Connect-AzAccount -ServicePrincipal -Credential $Credential -Tenant $env:TENANT_ID -Subscription $env:SUBSCRIPTION_ID
+Connect-AzAccount -ServicePrincipal -Credential $Credential -Tenant $env:TENANT_ID -Subscription $env:SUBSCRIPTION_ID -EnvironmentName $env:AZURE_ENVIRONMENT_NAME
 
 Write-Host "Welcome to the Virtual Datacenter tool kit"
 
@@ -20,6 +20,16 @@ Start-Sleep -s 5
 
 ## Enter the main script for deploying shared services
 Write-Host "Starting the script for deploying your Shared Services"
-#./Orchestration/OrchestrationService/ModuleConfigurationDeployment.ps1 -DefinitionPath ./Environments/SharedServices/definition.json
+./Orchestration/OrchestrationService/ModuleConfigurationDeployment.ps1 -DefinitionPath ./Environments/SharedServices/definition.json 
 
-#./Orchestration/OrchestrationService/ModuleConfigurationDeployment.ps1 -DefinitionPath ./Environments/MS-VDI/definition.json
+Write-Host "The deployment was succesfull if: Exit code $LASTEXITCODE == 0" -Verbose
+
+Write-Host "Starting the script for deploying MS-VDI"
+./Orchestration/OrchestrationService/ModuleConfigurationDeployment.ps1 -DefinitionPath ./Environments/MS-VDI/definition.json
+
+Write-Host "The deployment was succesfull if: Exit code $LASTEXITCODE == 0" -Verbose
+
+## Run the cleanup script so that no values are retained in code for the config files
+Write-Host "Executing the cleanup script"
+
+./Orchestration/OrchestrationService/Cleanup_Script.ps1
