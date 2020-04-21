@@ -2,7 +2,7 @@
 
 Deployment steps for [SharedServices](../../Environments/SharedServices) archetypes provided in the toolkit.
 The documentation applies to manually building and running the docker instance. For github action setup click
-"HERE."
+[GitHub Action for VDC](../../vdc/.github/workflows)
 
 ### Clone the repository
 
