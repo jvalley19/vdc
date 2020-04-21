@@ -7,6 +7,8 @@
 
 ### The GitHub action in this repository will create the [Shared Services](../../Environments/SharedServices) Environment and the [MS-VDI](../../Environments/MS-VDI) environment all from a "push" to the GitHub repository.
 #### To change the environment being deployed you will need to manipulate the "entrypoint.ps1" file in the root directory. 
+
+### Get started on setting up the action below:
 1. #### Ensure you have the latest code when setting up your action pipeline
 	- ##### Files you need before proceeding with your actions
 		- 'dockerfile' in your root repository
