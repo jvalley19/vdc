@@ -72,7 +72,6 @@ Copy and paste this script into PowerShell to execute it.
 Note: The first two variables are set with the content of the configuration files we just modified. The path will not resolve correctly unless you are in `/usr/src/app` directory. 
 
 ```PowerShell
-$ENV:IS_DEV_OPS = "false"
 $ENV:ORGANIZATION_NAME = "[ORGANIZATION_NAME]"
 $ENV:AZURE_ENVIRONMENT_NAME = "[AZURE_ENVIRONMENT]"
 $ENV:AZURE_LOCATION = "[AZURE_REGION]"
@@ -90,8 +89,6 @@ $ENV:ADMIN_USER_SSH = "[SSH_KEY]"
 
 **NOTE:** Examples to setting the env variables
 
-- IS_DEV_OPS
-  - Leave this "false" when deploying manually. From GitHub actions workflow this value will be passed in as "true"
 - "[ORGANIZATION_NAME]"
   - Abbreviation of your org (for e.g. contoso) with **NO SPACES**
   - Must be 10 characters or less
@@ -166,7 +163,7 @@ If you prefer you can deploy the constituent modules for Shared Services individ
 The following is the series of commands to execute.
 
 ``` PowerShell
-        .\Orchestration\OrchestrationService\ModuleConfigurationDeployment.ps1 -DefinitionPath .\Environments\SharedServices\definition.json -ModuleConfigurationName "AzureFirewall"
+         .\Orchestration\OrchestrationService\ModuleConfigurationDeployment.ps1 -DefinitionPath .\Environments\SharedServices\definition.json -ModuleConfigurationName "AzureFirewall"
         .\Orchestration\OrchestrationService\ModuleConfigurationDeployment.ps1 -DefinitionPath .\Environments\SharedServices\definition.json -ModuleConfigurationName "VirtualNetwork"
         .\Orchestration\OrchestrationService\ModuleConfigurationDeployment.ps1 -DefinitionPath .\Environments\SharedServices\definition.json -ModuleConfigurationName "AzureSecurityCenter"
         .\Orchestration\OrchestrationService\ModuleConfigurationDeployment.ps1 -DefinitionPath .\Environments\SharedServices\definition.json -ModuleConfigurationName "NISTControls"
@@ -186,15 +183,6 @@ The following is the series of commands to execute.
 
 1. If deployment reports, unable to find deployment storage account, it could be that PowerShell is not connected to Azure.
 2. Open a new PowerShell/Docker instance if there was any changes to files in Environments folder
-
-### **Teardown the environment**
-
-``` PowerShell
-./Orchestration/OrchestrationService/ModuleConfigurationDeployment.ps1 -TearDownEnvironment -DefinitionPath ./Environments/SharedServices/definition.json
-```
-
-Note: This is the same command you used to deploy except that you include `-TearDownEnvironment`.
-It uses the same configuration, so if you change the configuration the tear down may not execute as expected.
 
 ### **Remove vdc-toolkit-rg**
 
