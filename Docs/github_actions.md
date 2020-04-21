@@ -1,11 +1,11 @@
 Getting started with GitHub Actions and the VDC toolkit
 
 1. Ensure you have the latest code when setting up your action pipeline
-a. Files you need before proceeding with your actions
-		i. 'dockerfile' in your root repository
-		ii. 'action.yml' in your root repository
-		iii. 'entrypoint.ps1' in your root repository 
-		iv. 'dockerimage.yml' under the "vdc/.github/workflows" directory
+	- Files you need before proceeding with your actions
+		- 'dockerfile' in your root repository
+		- 'action.yml' in your root repository
+		- 'entrypoint.ps1' in your root repository 
+		- 'dockerimage.yml' under the "vdc/.github/workflows" directory
 	
 2. You will also need to setup your github secrets for the pipeline to use
 	a. You will need the following secrets
