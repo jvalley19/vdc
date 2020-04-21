@@ -1,4 +1,4 @@
-## Getting started with GitHub Actions and the VDC toolkit
+# Getting started with GitHub Actions and the VDC toolkit
 
 #### GitHub Actions are apart of an automation workflow that can integrate with your CI/CD pipeline. 
 #### Developers can build, test and deploy upon code pushes and pulls to GitHub.
