@@ -834,19 +834,8 @@ Function Get-AllModules {
             # Adding Out-Null to prevent outputs from the Invoke-Command from being added to            
             Invoke-Command -ScriptBlock { dotnet build $topologicalSortRootPath --configuration Release --output ./ } | Out-Null
             
-            if ($ENV:IS_DEV_OPS -eq $true)
-            {
-                $topologicalSortAssemblyPath = Join-Path $topologicalSortRootPath -ChildPath "obj\Release\netstandard2.0\TopologicalSort.dll";
-                #REMOVE
-                Write-Host "Inside: Topological Assembly: $topologicalSortAssemblyPath"
-            }
-            else
-            {
-                $topologicalSortAssemblyPath = Join-Path $topologicalSortRootPath "TopologicalSort.dll"
-            }
             
-            #REMOVE
-            Write-Host "Topological Assembly: $topologicalSortAssemblyPath"
+            $topologicalSortAssemblyPath = Join-Path $topologicalSortRootPath "TopologicalSort.dll"
 
             Add-Type -Path $topologicalSortAssemblyPath
 
