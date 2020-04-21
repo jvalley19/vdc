@@ -8,30 +8,29 @@
 		- 'dockerimage.yml' under the "vdc/.github/workflows" directory
 	
 2. You will also need to setup your github secrets for the pipeline to use
-	a. You will need the following secrets
-		i. SERVICE_PRINCIPAL
-		ii. SERVICE_PRINCIPAL_PASS
-		iii. DEVOPS_SERVICE_PRINCIPAL_USER_ID
-		iv. ADMIN_USER_NAME
-		v. ADMIN_USER_PWD
-		vi. DOMAIN_ADMIN_USERNAME
-		vii. DOMAIN_ADMIN_USER_PWD
-		viii. TENANT_ID 
-		ix. SUBSCRIPTION_ID
-		x. KEYVAULT_MANAGEMENT_USER_ID
-		xi. ADMIN_USER_SSH 
+	- You will need the following secrets
+		- SERVICE_PRINCIPAL
+		- SERVICE_PRINCIPAL_PASS
+		- DEVOPS_SERVICE_PRINCIPAL_USER_ID
+		- ADMIN_USER_NAME
+		- ADMIN_USER_PWD
+		- DOMAIN_ADMIN_USERNAME
+		- DOMAIN_ADMIN_USER_PWD
+		- TENANT_ID 
+		- SUBSCRIPTION_ID
+		- KEYVAULT_MANAGEMENT_USER_ID
+		- ADMIN_USER_SSH 
 			
-	b. To add these secrets in your Github repository navigate to 
-		i. "Settings" -> "Secrets"
-			1) Then add each secret with exactly the name above			
+	- To add these secrets in your Github repository navigate to 
+		- "Settings" -> "Secrets"
+			- Then add each secret with exactly the name above			
 			
-		- *You do not need "" around your secret values. 
-	
+		-*You do not need* "" around your secret values. Enter them with raw data.
 	
 3. In your dockerimage.yml file you will need to change the following values that suit your need
-		a. ORGANIZATION_NAME
-		b. AZURE_LOCATION
-		c. Please keep the AZURE_DISCOVERY_URL as is
+	- ORGANIZATION_NAME
+	- AZURE_LOCATION
+	- Please keep the AZURE_DISCOVERY_URL as is
 
 4. Once you have all these changes and updated your Github secrets you can push the changes to your repository.
 	
