@@ -1,7 +1,7 @@
 Getting started with GitHub Actions and the VDC toolkit
 
 1. Ensure you have the latest code when setting up your action pipeline
-	a. Files you need before proceeding with your actions
+a. Files you need before proceeding with your actions
 		i. 'dockerfile' in your root repository
 		ii. 'action.yml' in your root repository
 		iii. 'entrypoint.ps1' in your root repository 
