@@ -58,9 +58,9 @@ You can get your user object id and tenant id in the portal or by using command 
 
 Using Azure PowerShell:
 
-1. Run `Connect-AzAccount -Tenant "[TENANT_ID]" -SubscriptionId "[SUBSCRIPTION_ID]" -EnvironmentName "[AZURE_ENVIRONMENT]"` to login and set an Azure context.
-1. Run `Get-AzContext | % { Get-AzADUser -UserPrincipalName $($_.Account.Id) } | select Id` to get the user object id.
-1. Run `Get-AzContext | select Tenant` to get the tenant id.
+1. Run `Login-AzAccount -Environment "[AZURE_ENVIRONMENT]"` to login and set an Azure context. For Azure Commercial environment "AzureCloud" & for Azure Government "AzureUSGovernment"
+2. Run `Get-AzContext | % { Get-AzADUser -UserPrincipalName $($_.Account.Id) } | select Id` to get the user object id.
+3. Run `Get-AzContext | select Tenant` to get the tenant id.
   
 #### Environmental variables
 
