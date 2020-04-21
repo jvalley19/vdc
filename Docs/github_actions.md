@@ -33,4 +33,4 @@ Getting started with GitHub Actions and the VDC toolkit
 		b. AZURE_LOCATION
 		c. Please keep the AZURE_DISCOVERY_URL as is
 
-	4. Once you have all these changes and updated your Github secrets you can push the changes to your repository. Upon the "push" you will kick off an action which will deploy the shared services and ms-vdi resources. 
+	4. Once you have all these changes and updated your Github secrets you can push the changes to your repository. 5. Upon the "push" you will kick off an action which will deploy the shared services and ms-vdi resources. 
