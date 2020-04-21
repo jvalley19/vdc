@@ -1,6 +1,8 @@
 # **To deploy Azure Virtual Datacenter for Shared Services**
 
 Deployment steps for [SharedServices](../../Environments/SharedServices) archetypes provided in the toolkit.
+The documentation applies to manually building and running the docker instance. For github action setup click
+[GitHub Action for VDC](../../.github/workflows/README.md)
 
 ### Clone the repository
 
@@ -23,7 +25,7 @@ These steps assume that the `git` command is on your path.
 
 After the image finishing building, you can run it using:
 
-`docker run -it --rm -v C:\git\vdc\Config:/usr/src/app/Config -v C:\git\vdc\Environments:/usr/src/app/Environments -v C:\git\vdc\Modules:/usr/src/app/Modules vdc:latest`
+`docker run -it --entrypoint="pwsh" --rm -v C:\git\vdc\Config:/usr/src/app/Config -v C:\git\vdc\Environments:/usr/src/app/Environments -v C:\git\vdc\Modules:/usr/src/app/Modules vdc:latest`
 
 A few things to note:
 
@@ -59,25 +61,6 @@ Using Azure PowerShell:
 1. Run `Connect-AzAccount -Tenant "[TENANT_ID]" -SubscriptionId "[SUBSCRIPTION_ID]" -EnvironmentName "[AZURE_ENVIRONMENT]"` to login and set an Azure context.
 1. Run `Get-AzContext | % { Get-AzADUser -UserPrincipalName $($_.Account.Id) } | select Id` to get the user object id.
 1. Run `Get-AzContext | select Tenant` to get the tenant id.
-
-### Setting the configuration
-
-To deploy the Shared Services environment, you will need to modify two configuration files and set several environmental variables.
-
-#### [`Config\toolkit.subscription.json`](../Config/toolkit.subscription.json)
-
-This file is for toolkit configuration in general.
-
-- Set `Subscription.TenantId` to the tenant id note above.
-- Set `Subscription.SubscriptionId` to the id of the subscription used for logging and deployment state tracking noted above.
-- Set `Subscription.Location` for Azure regions. For e.g. for Azure Gov, "USGov Virginia"
-
-#### [`Environments\_Common\subscriptions.json`](../Environments/_Common/subscriptions.json)
-
-This file is for the deployment enviroments configuration. Update the subscription & tenant id's in the following environments in the subscriptions.json, `VDCVDI`, `SharedServices` & `Artifacts`
-
-- Set `TenantId` to the tenant id note above.
-- Set `SubscriptionId` to the id of the target subscription for the deployment noted above.
   
 #### Environmental variables
 
@@ -149,6 +132,12 @@ To use the above script:
 4. Copy the script into the clipboard and paste it in the terminal.
 5. Verify that the enviromental variables are set by running `env` to view the current values.
 
+#### Pre-req script 
+##### This script will ensure that the configuration files are updated with your environment variables. 
+  ``` PowerShell
+  ./Orchestration/OrchestrationService/Pre_req_script.ps1
+  ```
+  ** You will need to run the cleanup script after you are done deploying the modules to ensure your secret values are not passed into the GitHub repository. **
 #### Parameters
 
 Any application specific parameters updates should be done in the [parameters.json](../../Environments/SharedServices/parameters.json) file such as IP address, subnet names, subnet range, secrets etc.
@@ -166,6 +155,11 @@ Any application specific parameters updates should be done in the [parameters.js
 The toolkit will begin deploying the constituent modules and the status will be sent to the terminal.
 Open the [Azure portal](https://portal.azure.us) and you can check the status of the invididual deployments. Azure portal link will be based on azure environment.
 
+### Cleanup script 
+#### This script will make sure all the environment variable values are not stored in your configuration files. Please run this after you are done deploying the modules. Usually you will run this script when you are about to exit your container. 
+``` PowerShell
+  ./Orchestration/OrchestrationService/Cleanup_Script.ps1
+  ```
 ## Deploying individual modules
 
 If you prefer you can deploy the constituent modules for Shared Services individually.
