@@ -3,6 +3,8 @@
     "DeploymentName": "shrdsvcs",
     "InstanceName": "${Parameters.Organization}-${Parameters.DeploymentName}",
     "Subscription": "SharedServices",
+    "SubscriptionId": "env(SUBSCRIPTION_ID)",
+    "TenantId": "env(TENANT_ID)",
     "Location": "env(AZURE_LOCATION)",
     "EnvironmentName": "env(AZURE_ENVIRONMENT_NAME)",
     "StorageBlobUrl": "env(AZURE_STORAGE_BLOB_URL)",
