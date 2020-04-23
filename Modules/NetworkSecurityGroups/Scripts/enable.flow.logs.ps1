@@ -25,7 +25,7 @@
         [string]
         $environmentName
     )
-
+Write-Host "The sub id is: $subscriptionId"
 try {
     $currentSubscriptionId = Get-AzContext | Select-Object "Subscription"
 
