@@ -32,4 +32,4 @@ jobs:
          
     - name: Build the Docker image & Deploy
       id : hello
-      uses: jvalley19/vdc@master
+      uses: rkselvi/vdc@master
