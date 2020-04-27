@@ -1,6 +1,6 @@
 {
-    "Comments":  "Cleaned up from deployment",
-    "TenantId":  "00000-0000000-000000-0000-0",
-    "SubscriptionId":  "000000-000-0000-0000",
-    "Location":  "DUMMYVALUE"
+  "Comments": "ToolKit for creating a new Virtual Data Center",
+  "TenantId": "35f102bf-a2d5-4531-86a3-fb1ba0d6725e",
+  "SubscriptionId": "00e1b4ce-d607-419f-88ec-143a3309a940",
+  "Location": "USGov Arizona"
 }

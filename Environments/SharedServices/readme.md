@@ -58,7 +58,7 @@ You can get your user object id and tenant id in the portal or by using command 
 
 Using Azure PowerShell:
 
-1. Run `Login-AzAccount -Environment "[AZURE_ENVIRONMENT]"` to login and set an Azure context. For Azure Commercial environment "AzureCloud" & for Azure Government "AzureUSGovernment"
+1. Run `Connect-AzAccount -Tenant "[TENANT_ID]" -SubscriptionId "[SUBSCRIPTION_ID]" -EnvironmentName "[AZURE_ENVIRONMENT]"` to login and set an Azure context. For Azure Commercial environment "AzureCloud" & for Azure Government "AzureUSGovernment"
 2. Run `Get-AzContext | % { Get-AzADUser -UserPrincipalName $($_.Account.Id) } | select Id` to get the user object id.
 3. Run `Get-AzContext | select Tenant` to get the tenant id.
   
@@ -129,12 +129,14 @@ To use the above script:
 4. Copy the script into the clipboard and paste it in the terminal.
 5. Verify that the enviromental variables are set by running `env` to view the current values.
 
-#### Pre-req script 
-##### This script will ensure that the configuration files are updated with your environment variables. 
+#### Pre-req script
+##### This script will ensure that the configuration files are updated with your environment variables.
+
   ``` PowerShell
   ./Orchestration/OrchestrationService/Pre_req_script.ps1
   ```
-  ** You will need to run the cleanup script after you are done deploying the modules to ensure your secret values are not passed into the GitHub repository. **
+  **You will need to run the cleanup script after you are done deploying the modules to ensure your secret values are not passed into the GitHub repository.**
+
 #### Parameters
 
 Any application specific parameters updates should be done in the [parameters.json](../../Environments/SharedServices/parameters.json) file such as IP address, subnet names, subnet range, secrets etc.
@@ -152,18 +154,13 @@ Any application specific parameters updates should be done in the [parameters.js
 The toolkit will begin deploying the constituent modules and the status will be sent to the terminal.
 Open the [Azure portal](https://portal.azure.us) and you can check the status of the invididual deployments. Azure portal link will be based on azure environment.
 
-### Cleanup script 
-#### This script will make sure all the environment variable values are not stored in your configuration files. Please run this after you are done deploying the modules. Usually you will run this script when you are about to exit your container. 
-``` PowerShell
-  ./Orchestration/OrchestrationService/Cleanup_Script.ps1
-  ```
 ## Deploying individual modules
 
 If you prefer you can deploy the constituent modules for Shared Services individually.
 The following is the series of commands to execute.
 
 ``` PowerShell
-         .\Orchestration\OrchestrationService\ModuleConfigurationDeployment.ps1 -DefinitionPath .\Environments\SharedServices\definition.json -ModuleConfigurationName "AzureFirewall"
+        .\Orchestration\OrchestrationService\ModuleConfigurationDeployment.ps1 -DefinitionPath .\Environments\SharedServices\definition.json -ModuleConfigurationName "AzureFirewall"
         .\Orchestration\OrchestrationService\ModuleConfigurationDeployment.ps1 -DefinitionPath .\Environments\SharedServices\definition.json -ModuleConfigurationName "VirtualNetwork"
         .\Orchestration\OrchestrationService\ModuleConfigurationDeployment.ps1 -DefinitionPath .\Environments\SharedServices\definition.json -ModuleConfigurationName "AzureSecurityCenter"
         .\Orchestration\OrchestrationService\ModuleConfigurationDeployment.ps1 -DefinitionPath .\Environments\SharedServices\definition.json -ModuleConfigurationName "NISTControls"
@@ -182,7 +179,24 @@ The following is the series of commands to execute.
 **NOTE:**
 
 1. If deployment reports, unable to find deployment storage account, it could be that PowerShell is not connected to Azure.
-2. Open a new PowerShell/Docker instance if there was any changes to files in Environments folder
+2. Open a new PowerShell/Docker instance if there were any changes to files in Environments folder
+
+### **Teardown the environment**
+
+``` PowerShell
+./Orchestration/OrchestrationService/ModuleConfigurationDeployment.ps1 -TearDownEnvironment -DefinitionPath ./Environments/SharedServices/definition.json
+```
+
+Note: This is the same command you used to deploy except that you include ` -TearDownEnvironment`.
+It uses the same configuration, so if you change the configuration the tear down may not execute as expected.
+
+### Cleanup script
+
+#### This script will make sure all the environment variable values are not stored in your configuration files. Please run this after you are done deploying the modules. Usually you will run this script when you are about to exit your container.
+
+``` PowerShell
+  ./Orchestration/OrchestrationService/Cleanup_Script.ps1
+  ```
 
 ### **Remove vdc-toolkit-rg**
 
