@@ -39,7 +39,7 @@
 3. #### In your dockerimage.yml file you will need to change the following values that suit your need
 	- ORGANIZATION_NAME
 	- AZURE_LOCATION
-	- Update uses to your GitHub repo name.
+	- Update "uses" to your GitHub repo name.
     	- uses: [YOUR_GITHUB]/vdc@master
 	- Please keep the AZURE_DISCOVERY_URL as is
 
