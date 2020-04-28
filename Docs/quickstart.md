@@ -84,7 +84,11 @@ Strictly speaking, you do not need a service principal for the purpose of this q
 You can reuse your user object id in place of the service principal object id.
 However, if you want to deploy using Azure DevOps you will need to create the service principal.
 
-Follow [these instructions](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) for creating the service principal and note the object id during creation. The service principal will require owner permissions.
+Follow  for creating the service principal and note the object id during creation. The service principal will require owner permissions.
+- [Create SPN via PowerShell for password based authentication](https://docs.microsoft.com/en-us/powershell/azure/create-azure-service-principal-azureps?view=azps-3.8.0#password-based-authentication)
+- [Create SPN via Azure Cli](https://docs.microsoft.com/en-us/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest)
+- [Create SPN via Portal](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)
+- [Verify & add roles/permissions](https://docs.microsoft.com/en-us/azure/role-based-access-control/role-assignments-portal)
 
 ### Setting the configuration
 
