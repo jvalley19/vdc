@@ -59,9 +59,9 @@ try {
 
     $NW = Get-AzNetworkWatcher -ResourceGroupName NetworkWatcherRg -Name "NetworkWatcher_$NetworkWatcherRegion" -ErrorAction SilentlyContinue
 
-    if ($NW -eq $null) {
+    if ($null -eq $NW) {
         $NWRG = Get-AzResourceGroup -Name NetworkWatcherRG -ErrorAction SilentlyContinue
-        if ($NWRG -eq $null) {
+        if ($null -eq $NWRG) {
             $NWRG = New-AzResourceGroup -Name NetworkWatcherRG -Location $NetworkwatcherRegion
         }
         
