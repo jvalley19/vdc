@@ -33,4 +33,4 @@ jobs:
          
     - name: Build the Docker image & Deploy
       id : hello
-      uses: [YOUR_GITHUB_NAME]/vdc@master
+      uses: jvalley19/vdc@master
