@@ -222,11 +222,11 @@
                 "Comments": "Creating an object so we can use a secretsobject parameter type in our ARM template",
                 "Secrets": [
                     {
-                        "secretName": "admin-user",
+                        "secretName": "VM-admin-user-name",
                         "secretValue": "env(ADMIN_USER_NAME)"
                     },
                     {
-                        "secretName": "admin-user-pswd",
+                        "secretName": "VM-admin-pw",
                         "secretValue": "env(ADMIN_USER_PWD)"
                     }
                 ]
