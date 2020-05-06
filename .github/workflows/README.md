@@ -16,7 +16,14 @@
 		- 'entrypoint.ps1' in your root repository 
 		- 'dockerimage.yml' under the "vdc/.GitHub/workflows" directory
 	
-2. #### You will also need to setup your GitHub secrets for the pipeline to use
+2. Create Service Pricipal
+ 
+  	Follow  for creating the service principal and note the object id and password during creation. The service principal will require owner permissions.
+
+- [Create SPN via PowerShell for password based authentication](https://docs.microsoft.com/en-us/powershell/azure/create-azure-service-principal-azureps?view=azps-3.8.0#password-based-authentication)
+- [Create SPN via Azure Cli](https://docs.microsoft.com/en-us/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest)
+- [Verify & add roles/permissions](https://docs.microsoft.com/en-us/azure/role-based-access-control/role-assignments-portal)
+3. #### You will also need to setup your GitHub secrets for the pipeline to use
 	- ##### You will need the following secrets
 		- SERVICE_PRINCIPAL
 		- SERVICE_PRINCIPAL_PASS
@@ -39,8 +46,11 @@
 3. #### In your dockerimage.yml file you will need to change the following values that suit your need
 	- ORGANIZATION_NAME
 	- AZURE_LOCATION
+	- Update "uses" to your GitHub repo name.
+    	- uses: [YOUR_GITHUB_NAME]/vdc@master
 	- Please keep the AZURE_DISCOVERY_URL as is
 
 4. #### Once you have all these changes and updated your GitHub secrets you can push the changes to your repository.
+
 	
 5. #### Upon the "push" you will kick off an action which will deploy the shared services and ms-vdi resources. 

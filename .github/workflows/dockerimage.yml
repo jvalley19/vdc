@@ -1,11 +1,10 @@
-name: Docker Image CI
+name: Docker Image CI - MSVDI
 
 on:
   push:
     branches: [ master ]
   pull_request:
     branches: [ master ]
-
 
 jobs:
 
@@ -34,6 +33,4 @@ jobs:
          
     - name: Build the Docker image & Deploy
       id : hello
-      uses: jvalley19/vdc@master
-      
-  
+      uses: [YOUR_GITHUB_NAME]/vdc@master
