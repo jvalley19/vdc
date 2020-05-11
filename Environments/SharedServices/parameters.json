@@ -742,19 +742,19 @@
                 "Comments": "Creating an object so we can use a secretsobject parameter type in our ARM template",
                 "Secrets": [
                     {
-                        "secretName": "VM-admin-user-name",
+                        "secretName": "vm-admin-user",
                         "secretValue": "env(ADMIN_USER_NAME)"
                     },
                     {
-                        "secretName": "VM-admin-pw",
+                        "secretName": "vm-admin-password",
                         "secretValue": "env(ADMIN_USER_PWD)"
                     },
                     {
-                        "secretName": "Domain-Admin-Username",
+                        "secretName": "domain-admin-user",
                         "secretValue": "env(DOMAIN_ADMIN_USERNAME)"
                     },
                     {
-                        "secretName": "Domain-Admin-PW",
+                        "secretName": "domain-admin-password",
                         "secretValue": "env(DOMAIN_ADMIN_USER_PWD)"
                     },
                     {
