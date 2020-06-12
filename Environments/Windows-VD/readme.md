@@ -1,7 +1,6 @@
-# **To deploy Azure Virtual Datacenter for VDI**
+# **To deploy Azure Virtual Datacenter for Windows Virtual Desktop**
 
-Deployment steps for [MS-VDI](../../Environments/MS-VDI) archetypes provided in the toolkit.
-
+THIS SETUP IS NOT COMPLETE YET. AS of 6/12/20.
 ### Clone the repository
 
 These steps assume that the `git` command is on your path.
@@ -11,27 +10,6 @@ These steps assume that the `git` command is on your path.
 3. Run `git clone https://github.com/RKSelvi/vdc.git`. This will clone the GitHub repository in a folder named `vdc`.
 4. Run `cd vdc` to change directory in the source folder.
 5. Run `git checkout master` to switch to the branch with the current in-development version of the toolkit.
-
-### Build the Docker image
-
-1. Ensure that the [Docker daemon](https://docs.docker.com/config/daemon/) is running. If you are new to Docker, the easiest way to do this is to install [Docker Desktop](https://www.docker.com/products/docker-desktop).
-1. Open a terminal window
-1. Navigate to the folder where you cloned the repository. _The rest of the quickstart assumes that this path is `C:\git\vdc\`_
-1. Run `docker build . -t vdc:latest` to build the image.
-
-### Run the toolkit container
-
-After the image finishing building, you can run it using:
-
-`docker run -it --rm -v C:\git\vdc\Config:/usr/src/app/Config -v C:\git\vdc\Environments:/usr/src/app/Environments -v C:\git\vdc\Modules:/usr/src/app/Modules vdc:latest`
-
-A few things to note:
-
-- You don't need to build the image every time you want to run the container. You'll only need to rebuild it if there are changes to the source (primarily changes in the `Orchestration` folder).
-- The `docker run` command above will map volumes in the container to volumes on the host machine. This will allow you to directly modify files in these directories (`Config`,`Environments`, and `Modules`).
-
-When the container starts, you will see the prompt
-`PS /usr/src/app>`
 
 ## Configure the toolkit
 
