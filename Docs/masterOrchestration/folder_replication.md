@@ -9,7 +9,7 @@
 			4. Change line 47: VNET spoke address prefix
 			
 2. If you are going to be deploying multiple "Shared Services" environments you will need to utilize:  
-	a. [Shared Services SPOKE](../../Enviroments/SharedServices-SPOKE) folder in the environment directory  
+	a. [Shared Services SPOKE](../../Environments/SharedServices-SPOKE) folder in the environment directory  
 	b. This folder has the necessary changes for deploying multiple iterations of shared services.  
 	c. Copy this folder however many times you need to deploy shared services.  
 
