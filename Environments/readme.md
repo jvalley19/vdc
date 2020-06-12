@@ -12,7 +12,7 @@ Think of the VDC toolkit as a nested ARM template deployment.
 You can specify any module you would like to deploy in the Orchestration.json file under each environemnt.
 Then add parameters for the module under the parameters.json file under the specificed enviornment you are deploying. 
 
-If you want to disable or "not deploy" certain resources in the orchestration file without deleting them. Please refer to [folder replication documentation](../Docs/masterOrchestration/folder_replication.md).
+If you want to **disable or "not deploy"** certain resources in the orchestration file without deleting them. Please refer to [folder replication documentation](../Docs/masterOrchestration/folder_replication.md).
 
 If you are adding additional resources to the environment orchestration file. Consider the following example.
 
