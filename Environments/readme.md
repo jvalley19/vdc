@@ -12,9 +12,11 @@ Think of the VDC toolkit as a nested ARM template deployment.
 You can specify any module you would like to deploy in the Orchestration.json file under each environemnt.
 Then add parameters for the module under the parameters.json file under the specificed enviornment you are deploying. 
 
-If you are adding additional resources to the environment orchestration file. COnsider the following example.
+If you want to disable or "not deploy" certain resources in the orchestration file without deleting them. Please refer to [folder replication documentation](../Docs/masterOrchestration/folder_replication.md).
 
-#### Storage Account example 
+If you are adding additional resources to the environment orchestration file. Consider the following example.
+
+### Storage Account example 
 You wish to add an additional storage account to the [MS-VDI environment](../Environments/MS-VDI). 
 
 For this example we would utilize the [Storage Account Module](../Modules/StorageAccounts).
