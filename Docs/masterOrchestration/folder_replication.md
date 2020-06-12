@@ -13,7 +13,7 @@
 	b. This folder has the necessary changes for deploying multiple iterations of shared services.
 	c. Copy this folder however many times you need to deploy shared services.
 
-**For any resources you do not want to deploy you must add the following to the Orchestration.JSON file**
+**For any resources you do not want to deploy you must add the following to the Orchestration.JSON file**  
 	- "Enabled": false,
 
 This will ensure the resource is not deployed for the environment. This applies to any folder under "environments"
