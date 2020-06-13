@@ -245,7 +245,7 @@
         "ArtifactsStorageAccount": "file(../_Common/artifactsStorageAccount.json)",
         "Jumpbox": {
             "ResourceGroup": "${Parameters.InstanceName}-jumpbox-rg",
-            "AdminUsername": "${Parameters.ModuleConfigurationParameters.KeyVault.SecretsObject.Secrets[0].secretName}",
+            "AdminUsername": "env(ADMIN_USER_NAME)",
             "SubnetName": "${Parameters.ModuleConfigurationParameters.VirtualNetworkSPOKE.Subnets[0].name}",
             "StorageBlobUrl": "${Parameters.StorageBlobUrl}",
             "Windows": {
@@ -268,7 +268,7 @@
         },
         "citrixStoreFrontVMs": {
             "ResourceGroup": "${Parameters.InstanceName}-storefront-rg",
-            "AdminUsername": "${Parameters.ModuleConfigurationParameters.KeyVault.SecretsObject.Secrets[0].secretName}",
+            "AdminUsername": "env(ADMIN_USER_NAME)",
             "SubnetName": "${Parameters.ModuleConfigurationParameters.VirtualNetworkSPOKE.Subnets[0].name}",
             "StorageBlobUrl": "${Parameters.StorageBlobUrl}",
             "Windows": {
@@ -286,7 +286,7 @@
         },
         "xenDesktopBrokerVMs": {
             "ResourceGroup": "${Parameters.InstanceName}-broker-rg",
-            "AdminUsername": "${Parameters.ModuleConfigurationParameters.KeyVault.SecretsObject.Secrets[0].secretName}",
+            "AdminUsername": "env(ADMIN_USER_NAME)",
             "SubnetName": "${Parameters.ModuleConfigurationParameters.VirtualNetworkSPOKE.Subnets[0].name}",
             "StorageBlobUrl": "${Parameters.StorageBlobUrl}",
             "Windows": {
@@ -304,7 +304,7 @@
         },
         "CTXSQLCluster": {
             "ResourceGroup": "${Parameters.InstanceName}-ctxsql-rg",
-            "AdminUsername": "${Parameters.ModuleConfigurationParameters.KeyVault.SecretsObject.Secrets[0].secretName}",
+            "AdminUsername": "env(ADMIN_USER_NAME)",
             "SubnetName": "${Parameters.ModuleConfigurationParameters.VirtualNetworkSPOKE.Subnets[0].name}",
             "StorageBlobUrl": "${Parameters.StorageBlobUrl}",
             "Windows": {
@@ -322,7 +322,7 @@
         },
         "CTXDesktopServers": {
             "ResourceGroup": "${Parameters.InstanceName}-ctxdesktops-rg",
-            "AdminUsername": "${Parameters.ModuleConfigurationParameters.KeyVault.SecretsObject.Secrets[0].secretName}",
+            "AdminUsername": "env(ADMIN_USER_NAME)",
             "SubnetName": "${Parameters.ModuleConfigurationParameters.VirtualNetworkSPOKE.Subnets[0].name}",
             "StorageBlobUrl": "${Parameters.StorageBlobUrl}",
             "Windows": {
