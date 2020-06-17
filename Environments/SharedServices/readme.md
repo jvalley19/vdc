@@ -4,6 +4,7 @@ Deployment steps for [SharedServices](../../Environments/SharedServices) archety
 The documentation applies to manually building and running the docker instance. For github action setup click
 [GitHub Action for VDC](../../.github/workflows/README.md). For the NEW master orchestration refer to [Master Orchestration](../../Docs/masterOrchestration) 
 
+
 ### Clone the repository
 
 These steps assume that the `git` command is on your path.
@@ -148,6 +149,7 @@ $ENV:AZURE_SENTINEL = "[BOOLEAN]"
     - "False" will NOT deploy Azure Sentinel 
   
 To use the above script:
+
 1. Return to the PS 7 working directory
 2. Make a copy of the above script and replace the necessary values.
 3. Copy the script into the clipboard and paste it in the terminal.
@@ -252,3 +254,4 @@ For safety reasons, the key vault will not be deleted. Instead, it will be set t
 ``` PowerShell
 Get-AzKeyVault -InRemovedState | ? { Write-Host "Removing vault: $($_.VaultName)"; Remove-AzKeyVault -InRemovedState -VaultName $_.VaultName -Location $_.Location -Force }
 ```
+

@@ -29,6 +29,7 @@ Write-Host "Starting the script for deploying MS-VDI"
 
 Write-Host "The deployment was succesfull if: Exit code $LASTEXITCODE == 0" -Verbose
 
+
 ## Run the cleanup script so that no values are retained in code for the config files
 Write-Host "Executing the cleanup script"
 

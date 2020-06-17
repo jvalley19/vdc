@@ -1,7 +1,8 @@
-﻿Write-Host `n"Running the Pre-Req script for the VDC toolkit" -ForegroundColor Cyan
+Write-Host `n"Running the Pre-Req script for the VDC toolkit" -ForegroundColor Cyan
 Write-Host `n"Setting Subscription ID and Tenant ID in the Config Files." -ForegroundColor Green
 
 ##### Replace values with environment variables for the toolkit.subscription.json file
+
 $var = (Get-Content -Path .\Config\toolkit.subscription.json) | ConvertFrom-Json
 $var.Comments = "ToolKit for creating a new Virtual Data Center"
 $var.SubscriptionId = $ENV:SUBSCRIPTION_ID
@@ -29,13 +30,14 @@ $arti = (Get-Content -Path .\Environments\_Common\subscriptions.json) | ConvertF
 $arti.SPOKE.SubscriptionId = $ENV:SUBSCRIPTION_ID
 $arti.SPOKE.TenantId = $ENV:TENANT_ID
 $arti | ConvertTo-Json | Set-Content -Path .\Environments\_Common\subscriptions.json
-
 $onprem = (Get-Content -Path .\Environments\_Common\subscriptions.json) | ConvertFrom-Json
 $onprem.OnPremises.SubscriptionId = $ENV:SUBSCRIPTION_ID
 $onprem.OnPremises.TenantId = $ENV:TENANT_ID
 $onprem | ConvertTo-Json | Set-Content -Path .\Environments\_Common\subscriptions.json
 
+
 Write-Host `n"Checking password randomization" -ForegroundColor Green
+
 #### Check if random passwords are needed or if passwords are provided for the VM admin accounts and the Active Directory Account
 
 # Random Password Function
@@ -71,3 +73,4 @@ if (($null -eq $ENV:DOMAIN_ADMIN_USER_PWD) -or ("" -eq $ENV:DOMAIN_ADMIN_USER_PW
 else{
     Write-Host `n"Domain Password was not randomized." -ForegroundColor Cyan
 }
+

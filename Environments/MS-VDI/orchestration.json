@@ -246,6 +246,7 @@
             }
         },
         {
+
             "Name": "JumpboxASG",
             "ModuleDefinitionName": "ApplicationSecurityGroups",
             "ResourceGroupName": "${Parameters.ModuleConfigurationParameters.ApplicationSecurityGroups.ResourceGroup}",
